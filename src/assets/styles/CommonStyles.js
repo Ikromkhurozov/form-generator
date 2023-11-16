@@ -17,6 +17,7 @@ export const Button = styled.button`
   color: ${(props) => props.color || "#000"};
   font-size: ${(props) => props.fontSize || "16px"};
   margin-top: ${(props) => props.marginTop || "0"};
+  margin-left: ${(props) => props.marginLeft || "0"};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,11 +49,11 @@ export const FormWrapper = styled.div`
   grid-template-columns: 3fr 3fr;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 650px;
+  max-width: ${(props) => props.maxWidth || "650px"};
   background-color: #efefff;
-  padding: 50px;
+  padding: 25px 50px;
   border-radius: 10px;
-  margin: 20px auto;
+  margin: 10px auto;
 `;
 export const CustomInput = styled.input.attrs(props => ({
   type: props.type || 'text',
@@ -69,6 +70,7 @@ export const CustomInput = styled.input.attrs(props => ({
   border: none;
   border-radius: 5px 5px 0 0 ;
   box-sizing: border-box;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
   
   &::placeholder{
     font-size: 13px;

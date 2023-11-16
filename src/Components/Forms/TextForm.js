@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, {lazy, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+
 import {
-  BtnWrapper,
-  Button,
   CustomInput,
   CustomInputWrapper,
   CustomText,
@@ -10,6 +9,9 @@ import {
   FormWrapper,
   Label
 } from "../../assets/styles/CommonStyles";
+
+const ButtonGroup = lazy(() => import("./ButtonGroup"));
+
  export default function TextForm() {
    const navigate = useNavigate()
    const [inputData, setInputData] = useState({
@@ -18,7 +20,7 @@ import {
      inputType: '',
      defaultValue: '',
      inputLength: '',
-     inputRequired: '',
+     inputRequired: true,
    });
 
    const handleInputValue = (e) => {
@@ -29,19 +31,19 @@ import {
      }));
    };
 
-   const onSave =() => {
-     navigate(`/`)
-   }
+   const handleSave =() => {
+    navigate(`/`)
+  }
 
-   const onBack = () => {
-     navigate(`/`)
-   }
+  const handleBack = () => {
+    navigate(`/`)
+  }
 
 
    return (
       <FormPageContainer>
         <CustomText fontSize="22px" weight="600" color="#555">
-          Fill all the Fields to create Input
+          Fill all the Fields to create <mark>Input</mark>
         </CustomText>
 
         <FormWrapper>
@@ -71,10 +73,7 @@ import {
           </CustomInputWrapper>
         </FormWrapper>
 
-        <BtnWrapper>
-          <Button onClick={onBack} bgColor="#999" color="#fff">Back</Button>
-          <Button onClick={onSave} bgColor="green" color="#fff">Save</Button>
-        </BtnWrapper>
+        <ButtonGroup onBack={handleBack} onSave={handleSave}/>
 
       </FormPageContainer>
   );

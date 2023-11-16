@@ -2,7 +2,7 @@ import React, {lazy} from 'react';
 import {GeneratedForm, MainContainer} from "./MainStyles";
 
 
-const FormOptions = lazy(() => import("../../Components/FormOptions/FormOptions"));
+const FormOptions = lazy(() => import("../../Components/Forms/FormOptions"));
 
 export default function Main() {
   return (

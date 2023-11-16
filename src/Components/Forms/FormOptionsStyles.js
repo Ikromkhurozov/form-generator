@@ -30,8 +30,8 @@ export const OptionsTitle = styled.h2`
 export const RadioInput = styled.input.attrs({ type: 'radio' })`
   appearance: none;
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background-color: #fff;
   border: 2px solid #0073FF;
   border-radius: 50%;
@@ -43,8 +43,8 @@ export const RadioInput = styled.input.attrs({ type: 'radio' })`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
     background-color: #0073FF;
     border-radius: 50%;
     opacity: ${(props) => (props.checked ? 1 : 0)};
@@ -56,3 +56,10 @@ export const RadioInput = styled.input.attrs({ type: 'radio' })`
   }
 `;
 
+export const ChooseOptionWarning = styled.div`
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: red;
+  margin: 5px 0;
+`
