@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {lazy, Suspense, useState, useMemo} from "react";
 
-function App() {
+import { Routes, Route} from 'react-router-dom';
+
+
+import {GlobalContext} from "./helpers/context";
+
+import PageLoader from "./Components/Loaders/PageLoader";
+
+const Main = lazy(() => import("./Views/Main/Main"));
+const GenerateForm = lazy(() => import("./Views/GenerateForm/GenerateForm"));
+
+export default function App() {
+  const [selectedOption, setSelectedOption] = useState("")
+
+  const globalContextValue = useMemo(
+    () => ({
+      setSelectedOption
+    }),
+    [
+      setSelectedOption
+    ]
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <GlobalContext.Provider value={globalContextValue}>
+    <Suspense fallback={<PageLoader/>}>
+        <Routes>
+          <Route path="/" element={<Main/>}></Route>
+          <Route path="generate">
+            <Route path=":id" element={<GenerateForm/>}/>
+          </Route>
+        </Routes>
+    </Suspense>
+  </GlobalContext.Provider>
   );
 }
 
-export default App;
