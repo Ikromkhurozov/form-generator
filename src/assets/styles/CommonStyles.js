@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {font} from "../../assets/styles/mixins";
 export const Label = styled.div`
   font-size: ${(props) => props.fontSize || "16px"};
   color: ${(props) => props.color || "#111"};
@@ -18,6 +17,7 @@ export const Button = styled.button`
   font-size: ${(props) => props.fontSize || "16px"};
   margin-top: ${(props) => props.marginTop || "0"};
   margin-left: ${(props) => props.marginLeft || "0"};
+  margin-right: ${(props) => props.marginRight || "0"};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,9 +45,9 @@ export const FormPageContainer = styled.div`
   max-width: 1200px;
 `
 export const FormWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 3fr;
+  display: ${(props) => props.display || "grid"};
   flex-wrap: wrap;
+  grid-template-columns: ${(props) => props.columnTemplate || '3fr 3fr'};
   width: 100%;
   max-width: ${(props) => props.maxWidth || "650px"};
   background-color: #efefff;
@@ -82,8 +82,9 @@ export const CustomInput = styled.input.attrs(props => ({
 `
 export const CustomInputWrapper =  styled.div`
   display: flex;
-  flex-direction: column;
-  margin: 15px 0;
+  flex-direction: ${(props) => props.flexDirection || "column"};
+  align-items: ${(props) => props.alignItems || "start"};
+  margin: ${(props) => props.margin || "15px 0"};
 `
 export const BtnWrapper =  styled.div`
   display: flex;
@@ -93,3 +94,32 @@ export const BtnWrapper =  styled.div`
     margin-left: 30px;
   }
 `
+
+export const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
+  appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #0073FF; 
+  border-radius: 4px;
+  margin-right: ${(props) => props.marginRight || "0"};
+  
+  &::before {
+    content: '\u2713'; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px; 
+    font-weight: 900;
+    color: #fff; 
+    opacity: ${(props) => (props.checked ? 1 : 0)}; 
+    transition: opacity 0.2s ease-in-out; 
+  }
+  
+  &:checked {
+    background-color: #0073FF;
+    border-color: #0073FF; 
+  }
+`;

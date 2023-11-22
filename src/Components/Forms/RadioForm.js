@@ -1,5 +1,8 @@
 import React, {lazy, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import {saveAs} from "file-saver"
+import axios from 'axios';
+
 
 import {
   CustomInput,
@@ -30,8 +33,18 @@ export default function RadioForm() {
     }));
   };
 
-  const handleSave =() => {
-    navigate(`/`)
+  const handleSave = async () => {
+
+    try {
+      // Send data to json-server
+      await axios.post('http://localhost:3000/radioData',{ ...radioData });
+
+      // Navigate to home page
+      navigate('/');
+    } catch (error) {
+      console.error('Error saving data:', error);
+    }
+    // saveToJsonFile(radioData);
   }
 
   const handleBack = () => {

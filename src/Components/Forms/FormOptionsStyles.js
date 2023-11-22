@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {font} from "../../assets/styles/mixins";
 
 export const OptionsWrapper = styled.div`
   display: flex;
@@ -12,7 +11,6 @@ export const OptionsWrapper = styled.div`
 export const OptionsForm = styled.div`
   display: flex;
   flex-direction: column;
-  ${font(`50px, 17px, 400, #000`)}
 `
 
 export const OptionWrapper  = styled.div`
@@ -22,7 +20,6 @@ export const OptionWrapper  = styled.div`
 `;
 
 export const OptionsTitle = styled.h2`
-  ${font(`17px, 18px, 500, #000 `)};
   width: 500px;
   text-align: center;
 `;

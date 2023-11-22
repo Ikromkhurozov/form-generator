@@ -23,8 +23,8 @@ export const ListItem = styled.li`
   
   &:before{
     content: "";
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-bottom: 12px solid #0073FF;
@@ -35,4 +35,8 @@ export const ListItem = styled.li`
 
 export const ItemContent = styled.span`
  max-width: 600px;
+  
+  &:after{
+    content: ", ";
+  }
 `
