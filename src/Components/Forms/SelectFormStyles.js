@@ -10,6 +10,7 @@ export const List = styled.ul`
   flex-direction: column;
   padding: 5px 30px;
   background-color: aliceblue;
+  width: 1000px;
 `
 
 export const ListItem = styled.li`
@@ -34,7 +35,8 @@ export const ListItem = styled.li`
 `
 
 export const ItemContent = styled.span`
- max-width: 600px;
+  max-width: 1000px;
+  width: 100%;
   
   &:after{
     content: ", ";

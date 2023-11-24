@@ -19,12 +19,12 @@ const ButtonGroup = lazy(() => import("./ButtonGroup"));
    const navigate = useNavigate()
    const [loading, setLoading] = useState(false)
    const [inputData, setInputData] = useState({
-     inputLabel: '',
-     placeholder: '',
-     inputType: '',
-     defaultValue: '',
-     inputLength: '',
-     id: '',
+     inputLabel: "",
+     placeholder: "",
+     inputType: "",
+     defaultValue: "",
+     inputLength: "",
+     id: "",
      inputRequired: false,
    });
    const [savedData, setSavedData] = useState([]);
@@ -41,12 +41,12 @@ const ButtonGroup = lazy(() => import("./ButtonGroup"));
      setSavedData((prevSavedData) => [...prevSavedData, {...inputData}]);
 
      setInputData({
-       inputLabel: '',
-       placeholder: '',
-       inputType: '',
-       defaultValue: '',
-       inputLength: '',
-       id: '',
+       inputLabel: "",
+       placeholder: "",
+       inputType: "",
+       defaultValue: "",
+       inputLength: "",
+       id: "",
        inputRequired: false,
      });
    }
@@ -65,7 +65,6 @@ const ButtonGroup = lazy(() => import("./ButtonGroup"));
 
        setLoading(false);
        navigate(`/`)
-
      }, 1100);
    }
 
@@ -117,7 +116,7 @@ const ButtonGroup = lazy(() => import("./ButtonGroup"));
           {savedData.map((data, index) => (
             <ListItem key={index}>
               <ItemContent> inputLabel: {data?.inputLabel} | placeholder: {data.placeholder} | inputType: {data?.inputType} | defaultValue: {data.defaultValue} | inputLength: {data?.inputLength} | id: {data?.id} inputRequired: {data?.inputRequired ? "Yes" : "No"}</ItemContent>
-              <Button onClick={() => onRemoveElement(index)} color="#fff" bgColor="red" width="auto" height="30px" marginLeft="20px" fontSize="14px" >Remove item if it isn't true</Button>
+              <Button onClick={() => onRemoveElement(index)} color="#fff" bgColor="red" width="180px" height="30px" marginLeft="20px" fontSize="14px" >Remove item if it isn't true</Button>
             </ListItem>
           ))}
         </List>
