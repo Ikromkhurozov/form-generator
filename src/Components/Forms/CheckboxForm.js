@@ -5,7 +5,7 @@ import {
   Button,
   CheckboxInput,
   CustomInput,
-  CustomInputWrapper,
+  CustomInputWrapper, CustomSelect,
   CustomText,
   FormPageContainer,
   FormWrapper,
@@ -82,10 +82,7 @@ export default function CheckboxForm() {
 
       setLoading(false);
       navigate(`/`)
-
     }, 1100);
-
-    navigate(`/`)
   }
 
   const handleBack = () => {
@@ -106,30 +103,33 @@ export default function CheckboxForm() {
   return (
     <FormPageContainer>
       <CustomText fontSize="22px" weight="600" color="#555">
-        Fill all the Fields to create <mark>Checkbox</mark>
+        Fill all the Fields to create <mark>{`${checkboxData.inputType}`}</mark>
       </CustomText>
 
       <FormWrapper maxWidth="700px">
         <CustomInputWrapper>
-          <Label>Label of Checkbox</Label>
-          <CustomInput onChange={handleCheckboxData} name="checkboxLabel" value={checkboxData.checkboxLabel} placeholder="Example: Please check languages, you wanna learn" marginTop="8px"></CustomInput>
+          <Label>Type of input (Radio, Checkbox)</Label>
+          <CustomSelect onChange={handleCheckboxData} name="inputType" value={checkboxData.inputType} marginTop="5px">
+            <option value="checkbox">Checkbox input</option>
+            <option value="radio">Radio input</option>
+          </CustomSelect>
         </CustomInputWrapper>
 
         <CustomInputWrapper>
-          <Label>Name of Checkbox</Label>
-          <CustomInput onChange={handleCheckboxData} name="nameCheckbox" value={checkboxData.nameCheckbox} placeholder="Example: nameCheckbox" marginTop="8px"></CustomInput>
+          <Label>Label of {`${checkboxData.inputType}`}</Label>
+          <CustomInput onChange={handleCheckboxData} name="checkboxLabel" value={checkboxData.checkboxLabel} placeholder="Example: Please select language, that you know" marginTop="8px"></CustomInput>
         </CustomInputWrapper>
+
         <CustomInputWrapper>
-          <Label>Type of input (text, email, number, etc.)</Label>
-          <CustomInput onChange={handleCheckboxData} name="inputType" placeholder="Checkbox" marginTop="8px" disabled="disabled"></CustomInput>
+          <Label>Name of {`${checkboxData.inputType}`}</Label>
+          <CustomInput onChange={handleCheckboxData} name="nameCheckbox" value={checkboxData.nameCheckbox} placeholder={`Example: Name of ${checkboxData.inputType}`} marginTop="8px"></CustomInput>
         </CustomInputWrapper>
 
         { !showOption && (
           <CustomInputWrapper>
-            <Button onClick={() => setShowOption(true)} color="#fff" bgColor="#5DA21A" width="180px" fontSize="15px" height="45px" marginTop="25px">Add Options to Checkbox</Button>
+            <Button onClick={() => setShowOption(true)} color="#fff" bgColor="#5DA21A" width="180px" fontSize="15px" height="45px" marginTop="25px">Add Options to {`${checkboxData.inputType}`}</Button>
           </CustomInputWrapper>
         )}
-
 
         {showOption && (
           <CreatingOptionWrapper>
@@ -138,16 +138,16 @@ export default function CheckboxForm() {
               <CustomInput onChange={handleCheckboxOption} name="valueCheckbox" value={checkboxData.option} placeholder="Example: russian, english" marginTop="8px"></CustomInput>
             </CustomInputWrapper>
             <Button onClick={onCancelOption} color="#fff" bgColor="#888" width="50px" fontSize="13px" height="40px" marginTop="30px" marginRight="10px">Cancel</Button>
-            <Button onClick={onAddCheckboxOption} color="#fff" bgColor="#009000" width="70px" fontSize="13px" height="40px" marginTop="30px">Add checkbox</Button>
+            <Button onClick={onAddCheckboxOption} color="#fff" bgColor="#009000" width="70px" fontSize="13px" height="40px" marginTop="30px">Add</Button>
           </CreatingOptionWrapper>
         )}
 
         <CustomInputWrapper flexDirection="row" alignItems="center">
           <CheckboxInput onClick={handleCheckboxData} checked={checkboxData.inputRequired} value={checkboxData.inputRequired} marginRight="10px" name="inputRequired"></CheckboxInput>
-          <Label>Please check if selecting Checkbox is Required!</Label>
+          <Label>Please check if selecting {`${checkboxData.inputType}`} is Required!</Label>
         </CustomInputWrapper>
 
-        <Button onClick={onSaveCheckboxInfo} color="#fff" bgColor="#009000" width="320px" height="45px" marginTop="5px">Save and Add another Checkbox</Button>
+        <Button onClick={onSaveCheckboxInfo} color="#fff" bgColor="#009000" width="320px" height="45px" marginTop="5px">Save and Add another Checkbox or Radio</Button>
       </FormWrapper>
 
       <List>
@@ -159,7 +159,7 @@ export default function CheckboxForm() {
               </ItemContent>
               )
             )}</ItemContent>
-            <Button onClick={() => onRemoveElement(index)} color="#fff" bgColor="red" width="auto" height="30px" marginLeft="20px" fontSize="14px" >Remove item if it is false</Button>
+            <Button onClick={() => onRemoveElement(index)} color="#fff" bgColor="red" width="200px" height="30px" marginLeft="20px" fontSize="14px" >Remove item if it is false</Button>
           </ListItem>
         ))}
       </List>
