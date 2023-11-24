@@ -2,16 +2,19 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  margin-bottom: 70px;
   width: 100%;
-  max-width: 1400px;
 `;
 
-export const GeneratedForm = styled.div`
+export const FormContainer = styled.div`
   background-color: antiquewhite;
-  width: 700px;
-  height: 80%;
+  width: 650px;
   border-radius: 10px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
 `

@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 const NotFound = lazy(() => import("../NotFound/NotFound"))
 const TextForm = lazy(() => import("../../Components/Forms/TextForm"))
 const SelectForm = lazy(() => import("../../Components/Forms/SelectForm"))
-const RadioForm = lazy(() => import("../../Components/Forms/RadioForm"))
 const CheckboxForm = lazy(() => import("../../Components/Forms/CheckboxForm"))
 export default function GenerateForm() {
   const { id } = useParams();
@@ -12,10 +11,8 @@ export default function GenerateForm() {
   const renderFormContent = () => {
     if (id ==="text-input"){
       return <TextForm/>
-    } else if(id ==="select-input"){
+    } else if (id ==="select-input"){
       return <SelectForm/>
-    } else if (id === "radio-input"){
-      return <RadioForm/>
     } else if (id === "checkbox-input"){
       return <CheckboxForm/>
     } else{

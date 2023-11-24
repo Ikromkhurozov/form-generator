@@ -1,10 +1,12 @@
 import styled from "styled-components";
+
 export const Label = styled.div`
   font-size: ${(props) => props.fontSize || "16px"};
   color: ${(props) => props.color || "#111"};
   font-weight: ${(props) => props.weight || "400"};
   line-height: ${(props) => props.lineHeight || "1.3"};
 `;
+
 export const Button = styled.button`
   width: ${(props) => props.width || "150px"};
   min-width: ${(props) => props.width};
@@ -30,12 +32,14 @@ export const Button = styled.button`
     opacity: 0.8;
   }
 `;
+
 export const CustomText = styled.div`
   font-size: ${(props) => props.fontSize || "16px"};
   color: ${(props) => props.color || "#111"};
   font-weight: ${(props) => props.weight || "400"};
   line-height: ${(props) => props.lineHeight || "1.3"};
 `
+
 export const FormPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,17 +48,19 @@ export const FormPageContainer = styled.div`
   width: 100%;
   max-width: 1200px;
 `
+
 export const FormWrapper = styled.div`
   display: ${(props) => props.display || "grid"};
   flex-wrap: wrap;
   grid-template-columns: ${(props) => props.columnTemplate || '3fr 3fr'};
   width: 100%;
   max-width: ${(props) => props.maxWidth || "650px"};
-  background-color: #efefff;
+  background-color: ${(props) => props.bgColor || "#efefff"};
   padding: 25px 50px;
   border-radius: 10px;
   margin: 10px auto;
 `;
+
 export const CustomInput = styled.input.attrs(props => ({
   type: props.type || 'text',
   placeholder: props.placeholder || 'Enter text here',
@@ -80,12 +86,18 @@ export const CustomInput = styled.input.attrs(props => ({
     border-bottom: 2px solid #0073FF;
   }
 `
+
 export const CustomInputWrapper =  styled.div`
   display: flex;
   flex-direction: ${(props) => props.flexDirection || "column"};
   align-items: ${(props) => props.alignItems || "start"};
   margin: ${(props) => props.margin || "15px 0"};
+  
+  &:nth-child(odd){
+     margin: ${(props => props.margin || "15px 0")};
+  }
 `
+
 export const BtnWrapper =  styled.div`
   display: flex;
   margin: 10px 0;
@@ -123,3 +135,43 @@ export const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
     border-color: #0073FF; 
   }
 `;
+
+export const FormContent = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+export const CustomSelect = styled.select`
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #0073FF;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-right: ${(props) => props.marginRight || '0'};
+  margin-top: ${(props) => props.marginTop || "0"};
+
+  &:focus {
+    outline: none;
+    border-color: #0073FF;
+    box-shadow: 0 0 5px rgba(0, 115, 255, 0.5);
+  }
+
+  &::after {
+    content: '\u25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #0073FF;
+  }
+
+  & option {
+    background-color: #fff;
+    color: #333;
+  }
+
+  &:hover option {
+    background-color: #f0f0f0;
+  }
+`
